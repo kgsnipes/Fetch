@@ -5,8 +5,8 @@
 	<DomainMonitor domain="solestruck.com" protocol="ping" interval="600" latencyThreshold="300"></DomainMonitor>
 	<DomainMonitor domain="78.136.39.89" protocol="http" interval="600" latencyThreshold="300"></DomainMonitor>
 	
-	<URLMonitor domain="http://bsn-supplements.com/en-gb" interval="600" latencyThreshold="300"></URLMonitor>
-	<URLMonitor domain="http://bsn-supplements.com/en-gb/products" interval="600" latencyThreshold="300"></URLMonitor>
+	<URLMonitor url="http://bsn-supplements.com/en-gb" interval="600" latencyThreshold="300"></URLMonitor>
+	<URLMonitor url="http://bsn-supplements.com/en-gb/products" interval="600" latencyThreshold="300"></URLMonitor>
 	
-	<notifier type="email" smtp="" tls="" recipients="kaushik.ganguly@groupfmg.com" cc="" bcc=""></notifier>
+	<notifier type="email" smtp="smtp.gmail.com" smtpPort="587" tls="true" recipients="kaushik.ganguly@groupfmg.com" cc="" bcc="" userName="kgsnipes@gmail.com" password=""></notifier>
 </SiteMonitor>

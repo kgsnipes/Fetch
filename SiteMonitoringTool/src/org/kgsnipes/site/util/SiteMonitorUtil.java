@@ -1,15 +1,18 @@
 package org.kgsnipes.site.util;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
 import org.kgsnipes.site.Main;
+import org.quartz.Scheduler;
 
 public class SiteMonitorUtil {
 	
@@ -62,10 +65,28 @@ public class SiteMonitorUtil {
 			 return document;  
 		}
 	 
-	 public static void createJobsAndSchedule(SiteMonitorConfig config)throws Exception
+	 public static void createJobsAndSchedule(Scheduler scheduler,SiteMonitorConfig config)throws Exception
+	 {
+		 scheduleSiteURLJob(scheduler, config);
+		 scheduleDomainJob(scheduler, config);
+	 }
+	 
+	 public static void scheduleSiteURLJob(Scheduler scheduler,SiteMonitorConfig config)throws Exception
+	 {
+		 List<Map<String,String>> site=config.getSiteURLConfigs();
+		 
+		 for(Map<String,String> m:site)
+		 {
+			 
+		 }
+	 }
+	 
+	 public static void scheduleDomainJob(Scheduler scheduler,SiteMonitorConfig config)throws Exception
 	 {
 		 
 	 }
+	 
+	
 	 
 
 }

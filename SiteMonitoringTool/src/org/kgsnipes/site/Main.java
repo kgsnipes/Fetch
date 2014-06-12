@@ -2,10 +2,13 @@ package org.kgsnipes.site;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.log4j.Logger;
 import org.kgsnipes.site.util.SiteMonitorConfig;
+import org.kgsnipes.site.util.SiteMonitorStat;
 import org.kgsnipes.site.util.SiteMonitorUtil;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
@@ -15,9 +18,13 @@ public class Main {
 	
 	private static final Logger log=Logger.getLogger(Main.class);
 
-	static Scheduler scheduler=null;
-	static SiteMonitorConfig config=null;
-	static CommandLine cmdLine=null;
+	public static Scheduler scheduler=null;
+	public static SiteMonitorConfig config=null;
+	public static CommandLine cmdLine=null;
+	public static List<SiteMonitorStat> stat=new ArrayList<SiteMonitorStat>();
+	
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -28,7 +35,7 @@ public class Main {
 			 scheduler = StdSchedulerFactory.getDefaultScheduler();
 			 attachShutDownHook();
 			 scheduler.start();
-			
+			 startSchedulingJobs();
 		}
 		catch(Exception ex)
 		{
@@ -49,16 +56,24 @@ public class Main {
 		{
 			log.info("The config file "+cmdLine.getOptionValue("config"));
 			File f=new File(cmdLine.getOptionValue("config"));
-			try {
-				config.setConfigDoc(SiteMonitorUtil.getXMLDocument(f.toURI().toURL().toString()));
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if(f.exists())
+			{
+				try {
+					config.setConfigDoc(SiteMonitorUtil.getXMLDocument(f.toURI().toURL().toString()));
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			else
+			{
+				log.info("No such config file found " +cmdLine.getOptionValue("config"));
+			}
+			
 		}
 		else
 		{
-			log.info("No config file found");
+			log.info("No config file mentioned");
 		}
 		
 	}
@@ -81,6 +96,10 @@ public class Main {
 		  });
 		  
 		 }
-	
+	 public static void startSchedulingJobs(){
+		 
+		 
+		 
+	 }
 
 }
