@@ -1,0 +1,253 @@
+INFO main org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+INFO main org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+INFO main org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.1 created.
+INFO main org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+INFO main org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'SiteMonitoringScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 50 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'SiteMonitoringScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.1
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED started.
+DEBUG SiteMonitoringScheduler_QuartzSchedulerThread org.quartz.core.QuartzSchedulerThread - batch acquisition of 0 triggers
+DEBUG Timer-0 org.quartz.utils.UpdateChecker - Checking for available updated version of Quartz...
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED shutting down.
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED paused.
+DEBUG main org.quartz.simpl.SimpleThreadPool - Shutting down threadpool...
+DEBUG main org.quartz.simpl.SimpleThreadPool - Shutdown of threadpool complete.
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED shutdown complete.
+DEBUG SiteMonitoringScheduler_Worker-1 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-49 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-50 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-46 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-45 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-47 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-44 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-48 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-43 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-34 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-42 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-41 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-37 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-38 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-33 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-36 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-40 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-35 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-39 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-21 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-25 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-26 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-29 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-22 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-30 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-5 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-6 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-9 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-10 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-13 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-14 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-17 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-18 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-19 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-24 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-27 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-31 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-23 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-20 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-32 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-28 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-15 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-7 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-8 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-12 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-11 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-16 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-3 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-2 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-4 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+ERROR main org.kgsnipes.site.Main - Application Hit An Exception
+java.lang.NullPointerException
+	at java.io.File.<init>(Unknown Source)
+	at org.kgsnipes.site.Main.readConfig(Main.java:56)
+	at org.kgsnipes.site.Main.main(Main.java:27)
+INFO main org.kgsnipes.site.Main - No config file found
+INFO main org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+INFO main org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+INFO main org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.1 created.
+INFO main org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+INFO main org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'SiteMonitoringScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 50 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'SiteMonitoringScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.1
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED started.
+DEBUG SiteMonitoringScheduler_QuartzSchedulerThread org.quartz.core.QuartzSchedulerThread - batch acquisition of 0 triggers
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED shutting down.
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED paused.
+DEBUG main org.quartz.simpl.SimpleThreadPool - Shutting down threadpool...
+DEBUG main org.quartz.simpl.SimpleThreadPool - Shutdown of threadpool complete.
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED shutdown complete.
+DEBUG SiteMonitoringScheduler_Worker-4 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-31 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-47 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-32 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-28 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-27 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-24 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-23 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-20 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-7 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-50 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-49 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-8 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-45 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-42 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-41 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-37 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-46 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-38 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-34 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-33 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-30 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-29 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-25 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-26 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-22 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-21 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-12 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-11 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-15 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-16 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-19 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-9 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-10 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-13 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-14 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-17 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-18 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-3 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-1 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-2 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-5 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-6 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-48 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-44 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-43 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-40 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-39 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-36 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+DEBUG SiteMonitoringScheduler_Worker-35 org.quartz.simpl.SimpleThreadPool - WorkerThread is shut down.
+INFO main org.kgsnipes.site.Main - No config file found
+INFO main org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+INFO main org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+INFO main org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.1 created.
+INFO main org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+INFO main org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'SiteMonitoringScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 50 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'SiteMonitoringScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.1
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED started.
+DEBUG SiteMonitoringScheduler_QuartzSchedulerThread org.quartz.core.QuartzSchedulerThread - batch acquisition of 0 triggers
+DEBUG Timer-0 org.quartz.utils.UpdateChecker - Checking for available updated version of Quartz...
+INFO main org.kgsnipes.site.Main - The config filenull
+ERROR main org.kgsnipes.site.Main - Application Hit An Exception
+java.lang.NullPointerException
+	at java.io.File.<init>(Unknown Source)
+	at org.kgsnipes.site.Main.readConfig(Main.java:51)
+	at org.kgsnipes.site.Main.main(Main.java:27)
+INFO main org.kgsnipes.site.Main - No config file found
+INFO main org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+INFO main org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+INFO main org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.1 created.
+INFO main org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+INFO main org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'SiteMonitoringScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 50 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'SiteMonitoringScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.1
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED started.
+DEBUG SiteMonitoringScheduler_QuartzSchedulerThread org.quartz.core.QuartzSchedulerThread - batch acquisition of 0 triggers
+DEBUG Timer-0 org.quartz.utils.UpdateChecker - Checking for available updated version of Quartz...
+DEBUG SiteMonitoringScheduler_QuartzSchedulerThread org.quartz.core.QuartzSchedulerThread - batch acquisition of 0 triggers
+DEBUG SiteMonitoringScheduler_QuartzSchedulerThread org.quartz.core.QuartzSchedulerThread - batch acquisition of 0 triggers
+INFO main org.kgsnipes.site.Main - No config file found
+INFO main org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+INFO main org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+INFO main org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.1 created.
+INFO main org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+INFO main org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'SiteMonitoringScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 50 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'SiteMonitoringScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.1
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED started.
+DEBUG SiteMonitoringScheduler_QuartzSchedulerThread org.quartz.core.QuartzSchedulerThread - batch acquisition of 0 triggers
+DEBUG Timer-0 org.quartz.utils.UpdateChecker - Checking for available updated version of Quartz...
+INFO main org.kgsnipes.site.Main - No config file found
+INFO main org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+INFO main org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+INFO main org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.1 created.
+INFO main org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+INFO main org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'SiteMonitoringScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 50 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'SiteMonitoringScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.1
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED started.
+DEBUG SiteMonitoringScheduler_QuartzSchedulerThread org.quartz.core.QuartzSchedulerThread - batch acquisition of 0 triggers
+DEBUG Timer-0 org.quartz.utils.UpdateChecker - Checking for available updated version of Quartz...
+INFO main org.kgsnipes.site.Main - The config filenull
+ERROR main org.kgsnipes.site.Main - Application Hit An Exception
+java.lang.NullPointerException
+	at java.io.File.<init>(Unknown Source)
+	at org.kgsnipes.site.Main.readConfig(Main.java:51)
+	at org.kgsnipes.site.Main.main(Main.java:27)
+INFO main org.kgsnipes.site.Main - The config fileD:\Users\kaushik.ganguly\my_workspace\SiteMonitoringTool\config\SiteMonitorConfig.xml
+INFO main org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+INFO main org.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+INFO main org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.2.1 created.
+INFO main org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+INFO main org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'SiteMonitoringScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 50 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'SiteMonitoringScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+INFO main org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.2.1
+INFO main org.quartz.core.QuartzScheduler - Scheduler SiteMonitoringScheduler_$_NON_CLUSTERED started.
+DEBUG SiteMonitoringScheduler_QuartzSchedulerThread org.quartz.core.QuartzSchedulerThread - batch acquisition of 0 triggers
+DEBUG Timer-0 org.quartz.utils.UpdateChecker - Checking for available updated version of Quartz...

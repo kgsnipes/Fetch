@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SiteMonitor>
+	<DomainMonitor domain="bsn-supplements.com" protocol="http" interval="600" latencyThreshold="300"></DomainMonitor>
+	<DomainMonitor domain="flipkart.com" protocol="https" interval="600" latencyThreshold="300"></DomainMonitor>
+	<DomainMonitor domain="solestruck.com" protocol="ping" interval="600" latencyThreshold="300"></DomainMonitor>
+	<DomainMonitor domain="78.136.39.89" protocol="http" interval="600" latencyThreshold="300"></DomainMonitor>
+	
+	<URLMonitor domain="http://bsn-supplements.com/en-gb" interval="600" latencyThreshold="300"></URLMonitor>
+	<URLMonitor domain="http://bsn-supplements.com/en-gb/products" interval="600" latencyThreshold="300"></URLMonitor>
+	
+	<notifier type="email" smtp="" tls="" recipients="kaushik.ganguly@groupfmg.com" cc="" bcc=""></notifier>
+</SiteMonitor>
