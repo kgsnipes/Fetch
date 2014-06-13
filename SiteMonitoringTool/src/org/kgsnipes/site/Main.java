@@ -35,6 +35,7 @@ public class Main {
 		{
 			cmdLine=SiteMonitorUtil.usePosixParser(args);
 			readConfig(args);
+			readConfigOutput(args);
 			readEmailConfig(args);
 			 scheduler = StdSchedulerFactory.getDefaultScheduler();
 			 attachShutDownHook();
@@ -107,6 +108,25 @@ public class Main {
 		else
 		{
 			log.info("No config file mentioned");
+		}
+		
+	}
+	
+	public static void readConfigOutput(String []args)
+	{
+		config=new SiteMonitorConfig();
+		if(cmdLine.hasOption("output"))
+		{
+			log.info("The output file "+cmdLine.getOptionValue("output"));
+			
+			if(cmdLine.getOptionValue("output")!=null)
+			{
+				outputFileName=cmdLine.getOptionValue("output");
+			}
+		}
+		else
+		{
+			log.info("No output file mentioned");
 		}
 		
 	}

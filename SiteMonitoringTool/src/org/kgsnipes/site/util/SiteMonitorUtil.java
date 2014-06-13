@@ -42,6 +42,7 @@ public class SiteMonitorUtil {
 	   {
 	      final Options posixOptions = new Options();
 	      posixOptions.addOption("config", true, "config file path.");
+	      posixOptions.addOption("output", true, "config file path.");
 	      return posixOptions;
 	   }
 	 
@@ -397,5 +398,7 @@ public class SiteMonitorUtil {
 		return (System.getProperty("os.name").toLowerCase().indexOf("sunos") >= 0);
  
 	}
+	
+
 	
 }
