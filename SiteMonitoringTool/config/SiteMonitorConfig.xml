@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SiteMonitor>
 	
-	<URLMonitor url="http://www.bsn-supplements.com/en-gb" interval="30" latencyThreshold="10"></URLMonitor>
-	<URLMonitor url="http://bsn-supplements.com/en-gb/products" interval="30" latencyThreshold="10"></URLMonitor>
+	<URLMonitor url="https://www.google.ie/" interval="30" latencyThreshold="10"></URLMonitor>
+	<URLMonitor url="https://www.google.ie/maps" interval="30" latencyThreshold="10"></URLMonitor>
 	
 	<notifier type="email" smtp="smtp.gmail.com" smtpPort="587" tls="true" recipients="kaushik.ganguly@groupfmg.com" cc="" bcc="" userName="kgsnipes@gmail.com" password=""></notifier>
 </SiteMonitor>
