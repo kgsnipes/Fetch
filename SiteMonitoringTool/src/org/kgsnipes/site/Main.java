@@ -1,5 +1,6 @@
 package org.kgsnipes.site;
 
+import java.io.Console;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import org.kgsnipes.site.util.SiteMonitorUtil;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.impl.StdSchedulerFactory;
+
+import com.google.common.base.Strings;
 
 public class Main {
 	
@@ -65,6 +68,17 @@ public class Main {
 			{
 				try {
 					emailNotificationConfig=SiteMonitorUtil.getEmailConfig(SiteMonitorUtil.getXMLDocument(f.toURI().toURL().toString()));
+					/*if(emailNotificationConfig.getEnabled() && Strings.isNullOrEmpty(emailNotificationConfig.getPass()))
+					{
+						System.out.println("Enter your email alert password : ");
+						Console cons=null;
+						 char[] passwd=null;
+						 if ((cons = System.console()) != null &&
+						     (passwd = cons.readPassword("[%s]", "Password:")) != null) {
+							 emailNotificationConfig.setPass(new String(passwd));
+						 }
+					}*/
+						
 				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
