@@ -373,4 +373,29 @@ public class SiteMonitorUtil {
 		writeOutput(Main.outputFileName);
 	}
 	
+	
+	public static boolean isWindows() {
+		 
+		return (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0);
+ 
+	}
+ 
+	public static boolean isMac() {
+ 
+		return (System.getProperty("os.name").toLowerCase().indexOf("mac") >= 0);
+ 
+	}
+ 
+	public static boolean isUnix() {
+ 
+		return (System.getProperty("os.name").toLowerCase().indexOf("nix") >= 0 || System.getProperty("os.name").toLowerCase().indexOf("nux") >= 0 || System.getProperty("os.name").toLowerCase().indexOf("aix") > 0 );
+ 
+	}
+ 
+	public static boolean isSolaris() {
+ 
+		return (System.getProperty("os.name").toLowerCase().indexOf("sunos") >= 0);
+ 
+	}
+	
 }
