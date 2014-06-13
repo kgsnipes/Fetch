@@ -4,5 +4,5 @@
 	<URLMonitor url="http://www.bsn-supplements.com/en-gb" interval="60" latencyThreshold="50"></URLMonitor>
 	<URLMonitor url="http://bsn-supplements.com/en-gb/products" interval="60" latencyThreshold="50"></URLMonitor>
 	
-	<notifier type="email" smtp="smtp.gmail.com" smtpPort="587" tls="true" recipients="kaushik.ganguly@groupfmg.com" cc="" bcc="" userName="kgsnipes@gmail.com" password="86317724727707"></notifier>
+	<notifier type="email" smtp="smtp.gmail.com" smtpPort="587" tls="true" recipients="kaushik.ganguly@groupfmg.com" cc="" bcc="" userName="kgsnipes@gmail.com" password=""></notifier>
 </SiteMonitor>

@@ -343,6 +343,18 @@ public class SiteMonitorUtil {
 				buf.append("</td>");
 			buf.append("</tr>");
 		
+			
+
+			
+			buf.append("<tr>");
+				buf.append("<td>");
+				buf.append("Average Latency (seconds)");
+				buf.append("</td>");
+				buf.append("<td>");
+				buf.append((stat.getAverageLatency()!=null)?stat.getAverageLatency():"none");
+				buf.append("</td>");
+			buf.append("</tr>");
+		
 
 			
 			
