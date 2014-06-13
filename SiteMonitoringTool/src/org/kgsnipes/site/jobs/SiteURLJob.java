@@ -62,7 +62,20 @@ public class SiteURLJob implements Job {
             	stat.setFailureCount(stat.getFailureCount()+1);
             }
            
-            
+            if(stat.getLastFailureNotified()!=null)
+            {
+            	if(!stat.getLastFailureNotified())
+                {
+             		try {
+         				SiteMonitorUtil.sendMail("PANIC!!! :"+stat.getURI()+" URL DOWN "+ new Date().toString(), mapper.writeValueAsString(stat), mapper.writeValueAsString(stat));
+         				stat.setLastFailureNotified(true);
+         			} catch (Exception e1) {
+         				// TODO Auto-generated catch block
+         				stat.setLastFailureNotified(false);
+         				e1.printStackTrace();
+         			}
+                }
+            }
            
             
            

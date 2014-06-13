@@ -42,6 +42,8 @@ public class SiteMonitorStat {
 	public void setSuccessCount(Long successCount) {
 		this.successCount = successCount;
 		this.setSuccessPercentage((this.getSuccessCount()/(float)this.getPollCount())*100);
+		this.setErrorPercentage((this.getFailureCount()/(float)this.getPollCount())*100);
+		
 	}
 	public Long getFailureCount() {
 		return failureCount;
@@ -49,6 +51,7 @@ public class SiteMonitorStat {
 	public void setFailureCount(Long failureCount) {
 		this.failureCount = failureCount;
 		this.setErrorPercentage((this.getFailureCount()/(float)this.getPollCount())*100);
+		this.setSuccessPercentage((this.getSuccessCount()/(float)this.getPollCount())*100);
 	}
 	public Integer getInterval() {
 		return interval;
