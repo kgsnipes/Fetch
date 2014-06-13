@@ -14,7 +14,16 @@ public class SiteMonitorStat {
 	private Boolean lastFailureNotified;
 	private Float errorPercentage;
 	private Float successPercentage;
+	private String lastFailureMessage;
 	
+	
+	
+	public String getLastFailureMessage() {
+		return lastFailureMessage;
+	}
+	public void setLastFailureMessage(String lastFailureMessage) {
+		this.lastFailureMessage = lastFailureMessage;
+	}
 	public String getURI() {
 		return URI;
 	}

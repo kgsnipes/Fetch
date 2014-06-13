@@ -72,6 +72,7 @@ public class SiteURLJob implements Job {
         	stat.setPollCount(stat.getPollCount()+1);
         	stat.setFailureCount(stat.getFailureCount()+1);
         	stat.setLastFailurePoint(new Date());
+        	stat.setLastFailureMessage(e.getMessage());
         	
         	
         	try {
@@ -92,7 +93,7 @@ public class SiteURLJob implements Job {
         
         	
         	try {
-        		
+        		SiteMonitorUtil.refreshSiteMonitorOutputHTMLPage();
 				log.info(mapper.writeValueAsString(stat));
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

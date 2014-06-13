@@ -1,5 +1,6 @@
 package org.kgsnipes.site.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,6 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -29,6 +29,9 @@ import org.quartz.Scheduler;
 import org.quartz.SimpleScheduleBuilder;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
+
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 
 public class SiteMonitorUtil {
 	
@@ -187,7 +190,7 @@ public class SiteMonitorUtil {
 	
 	public static void sendMail(String subject,String text,String html) throws Exception
 	{
-		//sendMailForReal(subject, text, html);
+		sendMailForReal(subject, text, html);
 		log.info(subject+ "  "+text);
 	}
 	
@@ -256,6 +259,118 @@ public class SiteMonitorUtil {
 	        	httpclient.close();
 	        }
 		return response;
+	}
+	
+	public static String getStatHTML(SiteMonitorStat stat)
+	{
+		StringBuffer buf=new StringBuffer();
+		buf.append("<table border=\"1\">");
+			buf.append("<tr>");
+				buf.append("<td colspan=\"2\">");
+					buf.append("INFO : " +stat.getURI());
+				buf.append("</td>");
+			buf.append("</tr>");
+			
+			buf.append("<tr>");
+				buf.append("<td>");
+				buf.append("Poll Count");
+				buf.append("</td>");
+				buf.append("<td>");
+				buf.append(stat.getPollCount());
+				buf.append("</td>");
+			buf.append("</tr>");
+			
+			buf.append("<tr>");
+				buf.append("<td>");
+				buf.append("Success Count");
+				buf.append("</td>");
+				buf.append("<td>");
+				buf.append(stat.getSuccessCount());
+				buf.append("</td>");
+			buf.append("</tr>");
+			
+
+			buf.append("<tr>");
+				buf.append("<td>");
+				buf.append("Failure Count");
+				buf.append("</td>");
+				buf.append("<td>");
+				buf.append(stat.getFailureCount());
+				buf.append("</td>");
+			buf.append("</tr>");
+			
+			
+
+			buf.append("<tr>");
+				buf.append("<td>");
+				buf.append("Success Percentage");
+				buf.append("</td>");
+				buf.append("<td>");
+				buf.append((stat.getSuccessPercentage()!=null)?stat.getSuccessPercentage():"0.0");
+				buf.append("</td>");
+			buf.append("</tr>");
+			
+			
+			
+			buf.append("<tr>");
+				buf.append("<td>");
+				buf.append("Failure Percentage");
+				buf.append("</td>");
+				buf.append("<td>");
+				buf.append((stat.getErrorPercentage()!=null)?stat.getErrorPercentage():"0.0");
+				buf.append("</td>");
+			buf.append("</tr>");
+			
+			
+			buf.append("<tr>");
+				buf.append("<td>");
+				buf.append("Last Failure message");
+				buf.append("</td>");
+				buf.append("<td>");
+				buf.append((stat.getLastFailureMessage()!=null)?stat.getLastFailureMessage():"none");
+				buf.append("</td>");
+			buf.append("</tr>");
+		
+
+			
+			buf.append("<tr>");
+				buf.append("<td>");
+				buf.append("Last Failure Time");
+				buf.append("</td>");
+				buf.append("<td>");
+				buf.append((stat.getLastFailurePoint()!=null)?stat.getLastFailurePoint():"none");
+				buf.append("</td>");
+			buf.append("</tr>");
+		
+
+			
+			
+		buf.append("</table>");
+		return buf.toString();
+	}
+	
+	
+	public static String getStatHTMLPage(List<SiteMonitorStat> stat)
+	{
+		StringBuffer buf=new StringBuffer();
+		buf.append("<html><head><title>Site Monitor</title></head><body>");
+		for(SiteMonitorStat s: stat)
+		{
+			buf.append(getStatHTML(s));
+			buf.append("<br/>");
+		}
+		buf.append("</body></html>");
+		return buf.toString();
+	}
+	
+	public static void writeOutput(String fileName) throws Exception
+	{
+		Files.write(getStatHTMLPage(Main.stat), new File(fileName), Charsets.UTF_8);
+	}
+	
+	public static void refreshSiteMonitorOutputHTMLPage()throws Exception
+	{
+		writeOutput(Main.outputFileName);
 	}
 	
 }

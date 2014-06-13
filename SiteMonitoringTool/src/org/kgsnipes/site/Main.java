@@ -24,6 +24,7 @@ public class Main {
 	public static CommandLine cmdLine=null;
 	public static List<SiteMonitorStat> stat=new ArrayList<SiteMonitorStat>();
 	public static EmailNotificationConfig emailNotificationConfig=null;
+	public static String outputFileName="siteMonitor.html";
 	
 	
 	
