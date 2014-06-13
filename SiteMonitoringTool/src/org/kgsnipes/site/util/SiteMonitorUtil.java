@@ -1,5 +1,6 @@
 package org.kgsnipes.site.util;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,12 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -177,7 +184,14 @@ public class SiteMonitorUtil {
 		return config;
 	}
 	
+	
 	public static void sendMail(String subject,String text,String html) throws Exception
+	{
+		//sendMailForReal(subject, text, html);
+		log.info(subject+ "  "+text);
+	}
+	
+	public static void sendMailForReal(String subject,String text,String html) throws Exception
 	{
 		EmailNotificationConfig config=Main.emailNotificationConfig;
 		
@@ -202,6 +216,46 @@ public class SiteMonitorUtil {
 		}
 
 		
+	}
+	
+	
+	public static HttpResponse getResonseForGet(String url) throws Exception
+	{
+		HttpResponse response=null;
+		 CloseableHttpClient httpclient = HttpClients.createDefault();
+	        try {
+	            HttpGet httpget = new HttpGet(url);
+
+	          
+	            ResponseHandler<HttpResponse> responseHandler = new ResponseHandler<HttpResponse>() {
+
+	                public HttpResponse handleResponse(
+	                        final HttpResponse response) throws ClientProtocolException, IOException {
+	                   
+	                    return response;
+	                }
+
+	            };
+	            
+	            
+	             response = httpclient.execute(httpget, responseHandler);
+	             int status = response.getStatusLine().getStatusCode();
+	            if(status == 302)
+	            {
+	            	 String redirectURL = response.getFirstHeader("Location").getValue();
+	            	 httpclient.close();
+           		  	return getResonseForGet(redirectURL);
+	            }
+	        }
+	        catch(Exception ex)
+	        {
+	        	log.error("Exception",ex);
+	        	ex.printStackTrace();
+	        }
+	        finally{
+	        	httpclient.close();
+	        }
+		return response;
 	}
 	
 }

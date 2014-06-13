@@ -37,26 +37,19 @@ public class SiteURLJob implements Job {
        SiteMonitorStat stat=SiteMonitorUtil.getSiteMonitorStatByURI(data.get("stat").toString());
         
         
-        CloseableHttpClient httpclient = HttpClients.createDefault();
+        
         try {
-            HttpGet httpget = new HttpGet((String)data.get("url"));
+        	
+        	String url=(String)data.get("stat");
 
           
-            ResponseHandler<HttpResponse> responseHandler = new ResponseHandler<HttpResponse>() {
-
-                public HttpResponse handleResponse(
-                        final HttpResponse response) throws ClientProtocolException, IOException {
-                   
-                    return response;
-                }
-
-            };
             long stopTime=0l;
             long startTime=System.currentTimeMillis();
-            HttpResponse response = httpclient.execute(httpget, responseHandler);
+            HttpResponse response = SiteMonitorUtil.getResonseForGet(url);
             stopTime=System.currentTimeMillis();
             float timeDiffSeconds=(stopTime-startTime)/1000;
             int status = response.getStatusLine().getStatusCode();
+            stat.setPollCount(stat.getPollCount()+1);
             if (status >= 200 && status < 300 && timeDiffSeconds<stat.getThreshold()) {
             	
             	//this is a success hit
@@ -68,9 +61,9 @@ public class SiteURLJob implements Job {
             	//this is a failure
             	stat.setFailureCount(stat.getFailureCount()+1);
             }
+           
             
-            
-            stat.setPollCount(stat.getPollCount()+1);
+           
             
            
            
@@ -97,6 +90,7 @@ public class SiteURLJob implements Job {
         	
         }finally {
         
+        	
         	try {
         		
 				log.info(mapper.writeValueAsString(stat));
@@ -104,13 +98,7 @@ public class SiteURLJob implements Job {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} 
-            try {
-				httpclient.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				log.error("exception occured", e);
-				e.printStackTrace();
-			}
+           
         }
         
         
