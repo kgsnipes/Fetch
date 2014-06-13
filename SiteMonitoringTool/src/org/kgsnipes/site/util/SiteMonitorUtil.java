@@ -2,6 +2,7 @@ package org.kgsnipes.site.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -183,6 +184,7 @@ public class SiteMonitorUtil {
 			 config.setTlsEnabled(Boolean.parseBoolean(e.attributeValue("tls")));
 			 config.setSender(e.attributeValue("userName"));
 			 config.setPass(e.attributeValue("password"));
+			 config.setEnabled(Boolean.parseBoolean(e.attributeValue("enabled")));
 		 }
 		
 		return config;
@@ -199,7 +201,7 @@ public class SiteMonitorUtil {
 	{
 		EmailNotificationConfig config=Main.emailNotificationConfig;
 		
-		if(config!=null)
+		if(config!=null && config.getEnabled())
 		{
 			SimpleEmail email = new SimpleEmail();
 			email.setHostName(config.getSmtpHost());
@@ -307,7 +309,7 @@ public class SiteMonitorUtil {
 				buf.append("Success Percentage");
 				buf.append("</td>");
 				buf.append("<td>");
-				buf.append((stat.getSuccessPercentage()!=null)?stat.getSuccessPercentage():"0.0");
+				buf.append((stat.getSuccessPercentage()!=null)?customFormat("000.000",stat.getSuccessPercentage()):"0.0");
 				buf.append("</td>");
 			buf.append("</tr>");
 			
@@ -318,7 +320,7 @@ public class SiteMonitorUtil {
 				buf.append("Failure Percentage");
 				buf.append("</td>");
 				buf.append("<td>");
-				buf.append((stat.getErrorPercentage()!=null)?stat.getErrorPercentage():"0.0");
+				buf.append((stat.getErrorPercentage()!=null)?customFormat("000.000",stat.getErrorPercentage()):"0.0");
 				buf.append("</td>");
 			buf.append("</tr>");
 			
@@ -351,7 +353,7 @@ public class SiteMonitorUtil {
 				buf.append("Average Latency (seconds)");
 				buf.append("</td>");
 				buf.append("<td>");
-				buf.append((stat.getAverageLatency()!=null)?stat.getAverageLatency():"none");
+				buf.append((stat.getAverageLatency()!=null)?customFormat("000.000",stat.getAverageLatency()):"none");
 				buf.append("</td>");
 			buf.append("</tr>");
 		
@@ -411,6 +413,13 @@ public class SiteMonitorUtil {
  
 	}
 	
-
+	
+	public static String customFormat(String pattern, double value ) {
+	      DecimalFormat myFormatter = new DecimalFormat(pattern);
+	      String output = myFormatter.format(value);
+	      return output;
+	     // System.out.println(value + "  " + pattern + "  " + output);
+	   }
+	 
 	
 }

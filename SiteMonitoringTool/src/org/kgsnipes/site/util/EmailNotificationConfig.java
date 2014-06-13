@@ -10,9 +10,16 @@ public class EmailNotificationConfig {
 	private Boolean tlsEnabled;
 	private String sender;
 	private String pass;
+	private Boolean enabled;
 	
 	
 	
+	public Boolean getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
 	public String getSender() {
 		return sender;
 	}

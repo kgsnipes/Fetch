@@ -1,15 +1,9 @@
 package org.kgsnipes.site.jobs;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.kgsnipes.site.Main;
@@ -47,7 +41,7 @@ public class SiteURLJob implements Job {
             long startTime=System.currentTimeMillis();
             HttpResponse response = SiteMonitorUtil.getResonseForGet(url);
             stopTime=System.currentTimeMillis();
-            float timeDiffSeconds=(stopTime-startTime)/1000;
+            double timeDiffSeconds=(stopTime-startTime)/1000;
             stat.setLatency(timeDiffSeconds);
             int status = response.getStatusLine().getStatusCode();
             stat.setPollCount(stat.getPollCount()+1);

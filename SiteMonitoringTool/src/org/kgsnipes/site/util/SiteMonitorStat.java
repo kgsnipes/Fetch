@@ -12,24 +12,25 @@ public class SiteMonitorStat {
 	private Integer threshold=0;
 	private Date lastFailurePoint;
 	private Boolean lastFailureNotified;
-	private Float errorPercentage;
-	private Float successPercentage;
+	private Double errorPercentage;
+	private Double successPercentage;
 	private String lastFailureMessage;
-	private Float averageLatency=0.0f;
-	private Float latency=0.0f;
+	private Double averageLatency=0.0;
+	private Double latency=0.0;
 	
 	
-	public Float getLatency() {
+	public Double getLatency() {
 		return latency;
 	}
-	public void setLatency(Float latency) {
+	public void setLatency(Double latency) {
 		this.latency =+ latency;
-		this.setAverageLatency(this.latency/(float)pollCount);
+		if(this.latency>0.0)
+			this.setAverageLatency(this.latency/this.pollCount);
 	}
-	public Float getAverageLatency() {
+	public Double getAverageLatency() {
 		return averageLatency;
 	}
-	public void setAverageLatency(Float averageLatency) {
+	public void setAverageLatency(Double averageLatency) {
 			this.averageLatency=averageLatency;
 	}
 	public String getLastFailureMessage() {
@@ -55,8 +56,8 @@ public class SiteMonitorStat {
 	}
 	public void setSuccessCount(Long successCount) {
 		this.successCount = successCount;
-		this.setSuccessPercentage((this.getSuccessCount()/(float)this.getPollCount())*100);
-		this.setErrorPercentage((this.getFailureCount()/(float)this.getPollCount())*100);
+		this.setSuccessPercentage((this.getSuccessCount()/(double)this.getPollCount())*100);
+		this.setErrorPercentage((this.getFailureCount()/(double)this.getPollCount())*100);
 		
 	}
 	public Long getFailureCount() {
@@ -64,8 +65,8 @@ public class SiteMonitorStat {
 	}
 	public void setFailureCount(Long failureCount) {
 		this.failureCount = failureCount;
-		this.setErrorPercentage((this.getFailureCount()/(float)this.getPollCount())*100);
-		this.setSuccessPercentage((this.getSuccessCount()/(float)this.getPollCount())*100);
+		this.setErrorPercentage((this.getFailureCount()/(double)this.getPollCount())*100);
+		this.setSuccessPercentage((this.getSuccessCount()/(double)this.getPollCount())*100);
 	}
 	public Integer getInterval() {
 		return interval;
@@ -91,16 +92,16 @@ public class SiteMonitorStat {
 	public void setLastFailureNotified(Boolean lastFailureNotified) {
 		this.lastFailureNotified = lastFailureNotified;
 	}
-	public Float getErrorPercentage() {
+	public Double getErrorPercentage() {
 		return errorPercentage;
 	}
-	public void setErrorPercentage(Float errorPercentage) {
+	public void setErrorPercentage(Double errorPercentage) {
 		this.errorPercentage = errorPercentage;
 	}
-	public Float getSuccessPercentage() {
+	public Double getSuccessPercentage() {
 		return successPercentage;
 	}
-	public void setSuccessPercentage(Float successPercentage) {
+	public void setSuccessPercentage(Double successPercentage) {
 		this.successPercentage = successPercentage;
 	}
 
