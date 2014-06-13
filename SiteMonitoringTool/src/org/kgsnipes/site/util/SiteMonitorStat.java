@@ -5,11 +5,11 @@ import java.util.Date;
 public class SiteMonitorStat {
 
 	private String URI;
-	private Long pollCount;
-	private Long successCount;
-	private Long failureCount;
-	private Integer interval;
-	private Integer threshold;
+	private Long pollCount=0l;
+	private Long successCount=0l;
+	private Long failureCount=0l;
+	private Integer interval=0;
+	private Integer threshold=0;
 	private Date lastFailurePoint;
 	private Boolean lastFailureNotified;
 	private Float errorPercentage;
