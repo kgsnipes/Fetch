@@ -16,14 +16,20 @@ public class SiteMonitorStat {
 	private Float successPercentage;
 	private String lastFailureMessage;
 	private Float averageLatency=0.0f;
+	private Float latency=0.0f;
 	
+	
+	public Float getLatency() {
+		return latency;
+	}
+	public void setLatency(Float latency) {
+		this.latency =+ latency;
+		this.setAverageLatency(this.latency/(float)pollCount);
+	}
 	public Float getAverageLatency() {
 		return averageLatency;
 	}
 	public void setAverageLatency(Float averageLatency) {
-		if(this.averageLatency!=0.0f)
-			this.averageLatency = (float) ((this.averageLatency+averageLatency)/2.0);
-		else
 			this.averageLatency=averageLatency;
 	}
 	public String getLastFailureMessage() {
