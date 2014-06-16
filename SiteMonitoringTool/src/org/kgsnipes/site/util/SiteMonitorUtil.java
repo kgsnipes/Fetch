@@ -289,14 +289,37 @@ public class SiteMonitorUtil {
 	        }
 		return response;
 	}
-
+	
+	public static Template getFreeMarkerTemplate(String templateName)
+	{
+		Template template = null;
+		Configuration cfg = new Configuration();
+		
+		try
+		{
+			 template =cfg.getTemplate("page_templates/"+templateName);
+		}
+		catch(Exception ex)
+		{
+			try
+			{
+				template =cfg.getTemplate(templateName);
+			}
+			catch(Exception e)
+			{
+				log.error("WOW Templates are missing");
+			}
+		}
+		
+		return template;
+	}
 	
 	public static String getStatErrorNotificationHTMLPage(SiteMonitorStat stat) throws Exception
 	{
 		String output="";
-		Configuration cfg = new Configuration();
 		
-		Template template = cfg.getTemplate("page_templates/error_email_notification.ftl");
+		
+		Template template = getFreeMarkerTemplate("error_email_notification.ftl");
         
         // Build the data-model
         Map<String, Object> data = new HashMap<String, Object>();
@@ -311,9 +334,9 @@ public class SiteMonitorUtil {
 	public static String getStatHTMLPage(List<SiteMonitorStat> stat) throws Exception
 	{
 		String output="";
-		Configuration cfg = new Configuration();
 		
-		Template template = cfg.getTemplate("page_templates/site_stats.ftl");
+		
+		Template template = getFreeMarkerTemplate("site_stats.ftl");
         
         // Build the data-model
         Map<String, Object> data = new HashMap<String, Object>();
