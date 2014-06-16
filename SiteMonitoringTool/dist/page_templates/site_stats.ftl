@@ -31,72 +31,41 @@
 		<h1>Fetch - Site Monitoring Statistics</h1>
 		<h3>Statistics so far..</h3>
 		
-				<div class="col-md-7 col-lg-7 col-xs-7 col-sm-7">
-			<table class="table table-striped  table-condensed table-hover">
-			<thead>
-				<tr>
-					<td>Site URL : http://www.solestruck.com/mens/</td>
-					<td></td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Polled </td><td>75 times</td>
-				</tr>
-				<tr>
-					<td>Success Percentage </td><td><label class="bold">97.333 %</label></td>
-				</tr>
-				<tr>
-					<td>Failure Percentage </td><td><label class="bold">2.667 % </label></td>
-				</tr>
-				<tr>
-					<td>Latest Failure </td><td>  16 Jun, 2014 5:44:39 PM </td>
-				</tr>
-				<tr>
-					<td>Latest Failure Message </td><td>   IO Exception occured : No route to host: connect </td>
-				</tr>
-				<tr>
-					<td>Average latency </td><td>0.027 Seconds</td>
-				</tr>
-			<tbody>	
-			</table>
-			</div>
-			<div class="col-md-5 col-lg-5 col-xs-5 col-sm-5">
-				<div id="chartRender0"></div>
-			</div>
+		<#list stats as stat>
 		<div class="col-md-7 col-lg-7 col-xs-7 col-sm-7">
 			<table class="table table-striped  table-condensed table-hover">
 			<thead>
 				<tr>
-					<td>Site URL : http://www.solestruck.com/search-womens-shoes/</td>
+					<td>Site URL : ${stat.URI}</td>
 					<td></td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>Polled </td><td>75 times</td>
+					<td>Polled </td><td>${stat.pollCount} times</td>
 				</tr>
 				<tr>
-					<td>Success Percentage </td><td><label class="bold">97.333 %</label></td>
+					<td>Success Percentage </td><td><label class="bold">${stat.successPercentage} %</label></td>
 				</tr>
 				<tr>
-					<td>Failure Percentage </td><td><label class="bold">2.667 % </label></td>
+					<td>Failure Percentage </td><td><label class="bold">${stat.errorPercentage} % </label></td>
 				</tr>
 				<tr>
-					<td>Latest Failure </td><td>  16 Jun, 2014 5:44:39 PM </td>
+					<td>Latest Failure </td><td><#if stat.lastFailurePoint??>  ${stat.lastFailurePoint?datetime} <#else> NA </#if></td>
 				</tr>
 				<tr>
-					<td>Latest Failure Message </td><td>   IO Exception occured : No route to host: connect </td>
+					<td>Latest Failure Message </td><td><#if stat.lastFailureMessage??>  ${stat.lastFailureMessage} <#else> NA </#if></td>
 				</tr>
 				<tr>
-					<td>Average latency </td><td>0.027 Seconds</td>
+					<td>Average latency </td><td>${stat.averageLatency} Seconds</td>
 				</tr>
 			<tbody>	
 			</table>
 			</div>
 			<div class="col-md-5 col-lg-5 col-xs-5 col-sm-5">
-				<div id="chartRender1"></div>
+				<div id="chartRender${stat_index}"></div>
 			</div>
+		</#list>
 	</div>
 	
 	
@@ -122,6 +91,7 @@
       
 	</script>
 	<script>
+	<#list stats as stat>
 	
 			allChartTables.push(function(){
 			
@@ -130,8 +100,8 @@
 	        data.addColumn('number', 'Percentage');
 	      
 	        data.addRows([
-	          ['Success', 97.333],
-	          ['Failure', 2.667],
+	          ['Success', ${stat.successPercentage}],
+	          ['Failure', ${stat.errorPercentage}],
 	     
 	        ]);
 	
@@ -141,35 +111,12 @@
 	                       'height':300};
 	
 	        // Instantiate and draw our chart, passing in some options.
-	        var chart = new google.visualization.PieChart(document.getElementById("chartRender0"));
+	        var chart = new google.visualization.PieChart(document.getElementById("chartRender${stat_index}"));
 	        chart.draw(data, options);
 			
 			});
 					
-	
-			allChartTables.push(function(){
-			
-			var data = new google.visualization.DataTable();
-	        data.addColumn('string', 'Hits/Misses');
-	        data.addColumn('number', 'Percentage');
-	      
-	        data.addRows([
-	          ['Success', 97.333],
-	          ['Failure', 2.667],
-	     
-	        ]);
-	
-	        // Set chart options
-	        var options = {'title':'Hits/Misses',
-	                       'width':400,
-	                       'height':300};
-	
-	        // Instantiate and draw our chart, passing in some options.
-	        var chart = new google.visualization.PieChart(document.getElementById("chartRender1"));
-	        chart.draw(data, options);
-			
-			});
-					
+		</#list>
 	</script>
 </body>
 </html>
