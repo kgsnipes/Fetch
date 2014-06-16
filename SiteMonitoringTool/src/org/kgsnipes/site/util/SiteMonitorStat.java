@@ -1,6 +1,8 @@
 package org.kgsnipes.site.util;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class SiteMonitorStat {
 
@@ -12,13 +14,20 @@ public class SiteMonitorStat {
 	private Integer threshold=0;
 	private Date lastFailurePoint;
 	private Boolean lastFailureNotified;
-	private Double errorPercentage;
-	private Double successPercentage;
-	private String lastFailureMessage;
+	private Double errorPercentage=0.0;
+	private Double successPercentage=0.0;
+	private String lastFailureMessage="NA";
 	private Double averageLatency=0.0;
 	private Double latency=0.0;
+	private List<SiteMonitorErrorLog> errorLogs=new ArrayList<SiteMonitorErrorLog>();
 	
 	
+	public List<SiteMonitorErrorLog> getErrorLogs() {
+		return errorLogs;
+	}
+	public void setErrorLogs(List<SiteMonitorErrorLog> errorLogs) {
+		this.errorLogs = errorLogs;
+	}
 	public Double getLatency() {
 		return latency;
 	}
@@ -38,6 +47,13 @@ public class SiteMonitorStat {
 	}
 	public void setLastFailureMessage(String lastFailureMessage) {
 		this.lastFailureMessage = lastFailureMessage;
+		if(this.lastFailurePoint!=null && this.errorLogs!=null)
+			this.errorLogs.add(new SiteMonitorErrorLog(this.lastFailureMessage,new Date(lastFailurePoint.getTime())));
+		else
+		{
+			this.errorLogs=new ArrayList<SiteMonitorErrorLog>();
+			this.errorLogs.add(new SiteMonitorErrorLog(this.lastFailureMessage,new Date()));
+		}
 	}
 	public String getURI() {
 		return URI;

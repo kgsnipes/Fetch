@@ -2,7 +2,10 @@ package org.kgsnipes.site.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +14,7 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.SimpleEmail;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -33,6 +37,9 @@ import org.quartz.TriggerBuilder;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 
 public class SiteMonitorUtil {
 	
@@ -203,7 +210,8 @@ public class SiteMonitorUtil {
 		
 		if(config!=null && config.getEnabled())
 		{
-			SimpleEmail email = new SimpleEmail();
+			
+			HtmlEmail email = new HtmlEmail();	
 			email.setHostName(config.getSmtpHost());
 			email.setAuthentication(config.getSender(), config.getPass());
 			email.setDebug(true);
@@ -219,13 +227,31 @@ public class SiteMonitorUtil {
 			email.setMsg(text);
 			email.setStartTLSEnabled(config.getTlsEnabled());
 			email.send();
+			email.setHtmlMsg(html);
+			email.setTextMsg(text);
+			/*SimpleEmail email = new SimpleEmail();
+			email.setHostName(config.getSmtpHost());
+			email.setAuthentication(config.getSender(), config.getPass());
+			email.setDebug(true);
+			email.setSmtpPort(config.getSmtpPort());
+
+			for (int i = 0; i < config.getRecipients().length; i++)
+			{
+			    email.addTo(config.getRecipients()[i]);
+			}
+
+			email.setFrom(config.getSender(), "Email Notification");
+			email.setSubject(subject);
+			email.setMsg(text);
+			email.setStartTLSEnabled(config.getTlsEnabled());
+			email.send();*/
 		}
 
 		
 	}
 	
 	
-	public static HttpResponse getResonseForGet(String url) throws Exception
+	public static HttpResponse getResonseForGet(String url)throws Exception
 	{
 		HttpResponse response=null;
 		 CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -256,126 +282,47 @@ public class SiteMonitorUtil {
 	        catch(Exception ex)
 	        {
 	        	log.error("Exception",ex);
-	        	ex.printStackTrace();
+	        	throw ex;
 	        }
 	        finally{
 	        	httpclient.close();
 	        }
 		return response;
 	}
+
 	
-	public static String getStatHTML(SiteMonitorStat stat)
+	public static String getStatErrorNotificationHTMLPage(SiteMonitorStat stat) throws Exception
 	{
-		StringBuffer buf=new StringBuffer();
-		buf.append("<table border=\"1\">");
-			buf.append("<tr>");
-				buf.append("<td colspan=\"2\">");
-					buf.append("INFO : " +stat.getURI());
-				buf.append("</td>");
-			buf.append("</tr>");
-			
-			buf.append("<tr>");
-				buf.append("<td>");
-				buf.append("Poll Count");
-				buf.append("</td>");
-				buf.append("<td>");
-				buf.append(stat.getPollCount());
-				buf.append("</td>");
-			buf.append("</tr>");
-			
-			buf.append("<tr>");
-				buf.append("<td>");
-				buf.append("Success Count");
-				buf.append("</td>");
-				buf.append("<td>");
-				buf.append(stat.getSuccessCount());
-				buf.append("</td>");
-			buf.append("</tr>");
-			
-
-			buf.append("<tr>");
-				buf.append("<td>");
-				buf.append("Failure Count");
-				buf.append("</td>");
-				buf.append("<td>");
-				buf.append(stat.getFailureCount());
-				buf.append("</td>");
-			buf.append("</tr>");
-			
-			
-
-			buf.append("<tr>");
-				buf.append("<td>");
-				buf.append("Success Percentage");
-				buf.append("</td>");
-				buf.append("<td>");
-				buf.append((stat.getSuccessPercentage()!=null)?customFormat("000.000",stat.getSuccessPercentage()):"0.0");
-				buf.append("</td>");
-			buf.append("</tr>");
-			
-			
-			
-			buf.append("<tr>");
-				buf.append("<td>");
-				buf.append("Failure Percentage");
-				buf.append("</td>");
-				buf.append("<td>");
-				buf.append((stat.getErrorPercentage()!=null)?customFormat("000.000",stat.getErrorPercentage()):"0.0");
-				buf.append("</td>");
-			buf.append("</tr>");
-			
-			
-			buf.append("<tr>");
-				buf.append("<td>");
-				buf.append("Last Failure message");
-				buf.append("</td>");
-				buf.append("<td>");
-				buf.append((stat.getLastFailureMessage()!=null)?stat.getLastFailureMessage():"none");
-				buf.append("</td>");
-			buf.append("</tr>");
+		String output="";
+		Configuration cfg = new Configuration();
 		
-
-			
-			buf.append("<tr>");
-				buf.append("<td>");
-				buf.append("Last Failure Time");
-				buf.append("</td>");
-				buf.append("<td>");
-				buf.append((stat.getLastFailurePoint()!=null)?stat.getLastFailurePoint():"none");
-				buf.append("</td>");
-			buf.append("</tr>");
-		
-			
-
-			
-			buf.append("<tr>");
-				buf.append("<td>");
-				buf.append("Average Latency (seconds)");
-				buf.append("</td>");
-				buf.append("<td>");
-				buf.append((stat.getAverageLatency()!=null)?customFormat("000.000",stat.getAverageLatency()):"none");
-				buf.append("</td>");
-			buf.append("</tr>");
-		
-
-			
-			
-		buf.append("</table>");
-		return buf.toString();
+		Template template = cfg.getTemplate("page_templates/error_email_notification.ftl");
+        
+        // Build the data-model
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("stat", stat);
+        
+        StringWriter out = new StringWriter();
+        template.process(data, out);
+        output=out.toString();
+        return output;
 	}
 	
-	
-	public static String getStatHTMLPage(List<SiteMonitorStat> stat)
+	public static String getStatHTMLPage(List<SiteMonitorStat> stat) throws Exception
 	{
-		StringBuffer buf=new StringBuffer();
-		buf.append("<html><head><title>Site Monitor</title></head><body>");
-		for(SiteMonitorStat s: stat)
-		{
-			buf.append(getStatHTML(s));
-			buf.append("<br/>");
-		}
-		buf.append("</body></html>");
-		return buf.toString();
+		String output="";
+		Configuration cfg = new Configuration();
+		
+		Template template = cfg.getTemplate("page_templates/site_stats.ftl");
+        
+        // Build the data-model
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("stats", stat);
+        
+        StringWriter out = new StringWriter();
+        template.process(data, out);
+        output=out.toString();
+        return output;
 	}
 	
 	public static void writeOutput(String fileName) throws Exception

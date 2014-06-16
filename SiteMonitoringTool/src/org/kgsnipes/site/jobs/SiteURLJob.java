@@ -1,9 +1,16 @@
 package org.kgsnipes.site.jobs;
 
+import java.io.IOException;
+import java.net.NoRouteToHostException;
 import java.util.Date;
 import java.util.Map;
 
+import org.apache.http.ConnectionClosedException;
+import org.apache.http.HttpException;
 import org.apache.http.HttpResponse;
+import org.apache.http.NoHttpResponseException;
+import org.apache.http.ParseException;
+import org.apache.http.ProtocolException;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.kgsnipes.site.Main;
@@ -62,7 +69,7 @@ public class SiteURLJob implements Job {
             	if(!stat.getLastFailureNotified())
                 {
              		try {
-         				SiteMonitorUtil.sendMail("PANIC!!! :"+stat.getURI()+" URL DOWN "+ new Date().toString(), mapper.writeValueAsString(stat), mapper.writeValueAsString(stat));
+         				SiteMonitorUtil.sendMail("PANIC!!! :"+stat.getURI()+" URL DOWN "+ new Date().toString(), SiteMonitorUtil.getStatErrorNotificationHTMLPage(stat), SiteMonitorUtil.getStatErrorNotificationHTMLPage(stat));
          				stat.setLastFailureNotified(true);
          			} catch (Exception e1) {
          				// TODO Auto-generated catch block
@@ -80,11 +87,44 @@ public class SiteURLJob implements Job {
         	stat.setPollCount(stat.getPollCount()+1);
         	stat.setFailureCount(stat.getFailureCount()+1);
         	stat.setLastFailurePoint(new Date());
-        	stat.setLastFailureMessage(e.getMessage());
+        	
+        	
+        	if(e instanceof ConnectionClosedException)
+        	{
+        		stat.setLastFailureMessage(" Connection was closed : "+e.getMessage());
+        	}
+        	else if(e instanceof IOException)
+        	{
+        		stat.setLastFailureMessage(" IO Exception occured : "+e.getMessage());
+        	}
+        	else if(e instanceof HttpException)
+        	{
+        		stat.setLastFailureMessage(" HTTP Exception occured : "+e.getMessage());
+        	}
+        	else if(e instanceof NoHttpResponseException)
+        	{
+        		stat.setLastFailureMessage(" HTTP Response occured : "+e.getMessage());
+        	}
+        	else if(e instanceof ProtocolException)
+        	{
+        		stat.setLastFailureMessage(" Protocol Exception occured : "+e.getMessage());
+        	}
+        	else if(e instanceof ParseException)
+        	{
+        		stat.setLastFailureMessage(" Parse Exception occured : "+e.getMessage());
+        	}
+        	else if(e instanceof NoRouteToHostException)
+        	{
+        		stat.setLastFailureMessage(" Could Not resolve Host : "+e.getMessage());
+        	}
+        	else
+        	{
+        		stat.setLastFailureMessage(e.getMessage());
+        	}
         	
         	
         	try {
-				SiteMonitorUtil.sendMail("PANIC!!! :"+stat.getURI()+" URL DOWN "+ new Date().toString(), mapper.writeValueAsString(stat), mapper.writeValueAsString(stat));
+        		SiteMonitorUtil.sendMail("PANIC!!! :"+stat.getURI()+" URL DOWN "+ new Date().toString(), SiteMonitorUtil.getStatErrorNotificationHTMLPage(stat), SiteMonitorUtil.getStatErrorNotificationHTMLPage(stat));
 				stat.setLastFailureNotified(true);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
