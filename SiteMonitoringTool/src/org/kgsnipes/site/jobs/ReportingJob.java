@@ -30,7 +30,7 @@ public class ReportingJob implements Job {
         try {
         	
         	
-        	SiteMonitorUtil.sendMailForReport("Fetch - Site Monito Report  - Generated On"+ new Date().toString(), SiteMonitorUtil.getStatEmailPage(Main.stat), SiteMonitorUtil.getStatEmailPage(Main.stat));
+        	SiteMonitorUtil.sendMailForReport("Fetch - Site Monito Report  - Generated On "+ new Date().toString(), SiteMonitorUtil.getStatEmailPage(Main.stat), SiteMonitorUtil.getStatEmailPage(Main.stat));
             
            for(SiteMonitorStat s:Main.stat)
            {
@@ -39,7 +39,7 @@ public class ReportingJob implements Job {
            
         } catch(Exception e){
         	
-        	
+        	log.error("Something happened",e);
         	
         }finally {
         
