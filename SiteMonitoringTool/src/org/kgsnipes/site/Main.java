@@ -5,6 +5,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.log4j.Logger;
@@ -28,6 +29,7 @@ public class Main {
 	public static List<SiteMonitorStat> stat=new ArrayList<SiteMonitorStat>();
 	public static EmailNotificationConfig emailNotificationConfig=null;
 	public static String outputFileName="siteMonitor.html";
+	
 	
 	
 	

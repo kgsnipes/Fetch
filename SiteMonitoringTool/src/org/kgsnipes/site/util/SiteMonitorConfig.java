@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.Node;
@@ -90,6 +91,33 @@ public class SiteMonitorConfig {
 			}
 		 }
 		return configs;
+		
+	}
+	
+	public Map<String,String> getReportingConfigByForEmail()
+	{
+		Map<String,String> map=new HashMap<String,String>();
+		
+		 Element e =(Element) configDoc.selectSingleNode("/SiteMonitor/reporting[@type='email']");
+		 if(e!=null)
+		 {
+			 
+			map.put("type", e.attributeValue("type"));
+			map.put("enabled", e.attributeValue("enabled"));
+			map.put("interval", e.attributeValue("interval"));
+			map.put("smtp", e.attributeValue("smtp"));
+			
+			map.put("smtpPort", e.attributeValue("smtpPort"));
+			map.put("tls", e.attributeValue("tls"));
+			map.put("recipients", e.attributeValue("recipients"));
+			map.put("cc", e.attributeValue("cc"));
+			map.put("bcc", e.attributeValue("bcc"));
+			
+			map.put("userName", e.attributeValue("userName"));
+			map.put("password", e.attributeValue("password"));
+			
+		 }
+		return map;
 		
 	}
 

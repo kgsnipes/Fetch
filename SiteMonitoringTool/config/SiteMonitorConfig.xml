@@ -6,6 +6,6 @@
 	
 	<notifier type="email" enabled="false" smtp="smtp.gmail.com" smtpPort="587" tls="true" recipients="kgsnipes@gmail.com" cc="" bcc="" userName="kgsnipes@gmail.com" password=""></notifier>
 	
-	<reporting type="email" enabled="false"  interval="86400" smtp="smtp.gmail.com" smtpPort="587" tls="true" recipients="kgsnipes@gmail.com" cc="" bcc="" userName="kgsnipes@gmail.com" password=""></reporting>
+	<reporting type="email" enabled="false" interval="86400" smtp="smtp.gmail.com" smtpPort="587" tls="true" recipients="kgsnipes@gmail.com" cc="" bcc="" userName="kgsnipes@gmail.com" password=""></reporting>
 	
 </SiteMonitor>

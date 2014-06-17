@@ -251,6 +251,38 @@ public class SiteMonitorUtil {
 	}
 	
 	
+	public static void sendMailForReport(String subject,String text,String html) throws Exception
+	{
+		 Map<String,String> configMap=Main.config.getReportingConfigByForEmail();
+		
+		if(configMap!=null && configMap.get("enabled").equals("true"))
+		{
+			
+			HtmlEmail email = new HtmlEmail();	
+			email.setHostName(configMap.get("smtp"));
+			email.setAuthentication(configMap.get("userName"), configMap.get("password"));
+			email.setDebug(true);
+			email.setSmtpPort(Integer.parseInt(configMap.get("smtpPort").toString()));
+			String []recipients=configMap.get("enabled").toString().split(",");
+			for (int i = 0; i < recipients.length; i++)
+			{
+			    email.addTo(recipients[i]);
+			}
+
+			email.setFrom(configMap.get("userName"), "Email Notification");
+			email.setSubject(subject);
+			email.setMsg(text);
+			email.setStartTLSEnabled(new Boolean(configMap.get("tls").toString()));
+			email.send();
+			email.setHtmlMsg(html);
+			email.setTextMsg(text);
+			
+		}
+
+		
+	}
+	
+	
 	public static HttpResponse getResonseForGet(String url)throws Exception
 	{
 		HttpResponse response=null;
@@ -337,6 +369,23 @@ public class SiteMonitorUtil {
 		
 		
 		Template template = getFreeMarkerTemplate("site_stats.ftl");
+        
+        // Build the data-model
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("stats", stat);
+        
+        StringWriter out = new StringWriter();
+        template.process(data, out);
+        output=out.toString();
+        return output;
+	}
+	
+	public static String getStatEmailPage(List<SiteMonitorStat> stat) throws Exception
+	{
+		String output="";
+		
+		
+		Template template = getFreeMarkerTemplate("email_site_stats.ftl");
         
         // Build the data-model
         Map<String, Object> data = new HashMap<String, Object>();
