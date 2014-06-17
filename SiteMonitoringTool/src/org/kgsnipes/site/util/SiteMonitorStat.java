@@ -33,7 +33,7 @@ public class SiteMonitorStat {
 	}
 	public void setLatency(Double latency) {
 		this.latency =+ latency;
-		if(this.latency>0.0)
+		if(this.latency>0.0 && this.pollCount>0)
 			this.setAverageLatency(this.latency/this.pollCount);
 	}
 	public Double getAverageLatency() {

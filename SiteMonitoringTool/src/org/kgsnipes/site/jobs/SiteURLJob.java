@@ -48,7 +48,10 @@ public class SiteURLJob implements Job {
             long startTime=System.currentTimeMillis();
             HttpResponse response = SiteMonitorUtil.getResonseForGet(url);
             stopTime=System.currentTimeMillis();
-            double timeDiffSeconds=(stopTime-startTime)/1000;
+            double timeDiffSeconds=0.0;
+            if(stopTime-startTime>0)
+            	timeDiffSeconds=(stopTime-startTime)/1000;
+            
             stat.setLatency(timeDiffSeconds);
             int status = response.getStatusLine().getStatusCode();
             stat.setPollCount(stat.getPollCount()+1);
