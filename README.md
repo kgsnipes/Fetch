@@ -1,4 +1,4 @@
-Fetch
+# H1 Fetch
 =====
 
 Fetch is a simple yet powerful and precise site monitoring tool.
@@ -11,7 +11,7 @@ The release package has a sample configuration file for you to get started on.
 
 Also provided is a readme file for you to start the application
 
-Note:
+# H3 Note:
 -----
 you will need JDK1.5 or above installed on you machine for this to work.
 
