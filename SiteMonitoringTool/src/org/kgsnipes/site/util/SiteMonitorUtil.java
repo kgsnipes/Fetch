@@ -27,6 +27,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.kgsnipes.site.Main;
+import org.kgsnipes.site.jobs.ReportingJob;
 import org.kgsnipes.site.jobs.SiteURLJob;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -96,7 +97,7 @@ public class SiteMonitorUtil {
 	 public static void createJobsAndSchedule(Scheduler scheduler,SiteMonitorConfig config,List<SiteMonitorStat> stat)throws Exception
 	 {
 		 scheduleSiteURLJob(scheduler, config,stat);
-		 //scheduleDomainJob(scheduler, config,stat);
+		 scheduleEmailReportingJob(scheduler, config,stat);
 	 }
 	 
 	 public static void scheduleSiteURLJob(Scheduler scheduler,SiteMonitorConfig config,List<SiteMonitorStat> stat)throws Exception
@@ -130,34 +131,25 @@ public class SiteMonitorUtil {
 		 }
 	 }
 	 
-	 public static void scheduleDomainJob(Scheduler scheduler,SiteMonitorConfig config,List<SiteMonitorStat> stat)throws Exception
+	 public static void scheduleEmailReportingJob(Scheduler scheduler,SiteMonitorConfig config,List<SiteMonitorStat> stat)throws Exception
 	 {
 		 
-		 List<Map<String,String>> site=config.getSiteURLConfigs();
+		 Map<String,String> reportingConfig=config.getReportingConfigByForEmail();
 		 
-		 for(Map<String,String> m:site)
-		 {
-			 SiteMonitorStat statm=new SiteMonitorStat();
-			 statm.setURI(m.get("domain"));
-			 statm.setInterval(Integer.parseInt(m.get("interval").toString()));
-			 statm.setThreshold(Integer.parseInt(m.get("latencyThreshold").toString()));
-			 JobDetail job = JobBuilder.newJob(SiteURLJob.class)
-					    .withIdentity("job"+m.get("url").toString(), "SiteMonitoringScheduler")
-					    .usingJobData("stat", statm.getURI())
+			 JobDetail job = JobBuilder.newJob(ReportingJob.class)
+					    .withIdentity("emailReportingjob", "SiteMonitoringScheduler")
 					    .build();
 			 
 			 Trigger trigger = TriggerBuilder.newTrigger()
-			            .withIdentity("trigger"+m.get("url").toString(), "SiteMonitoringScheduler")
+			            .withIdentity("triggeremailreporting", "SiteMonitoringScheduler")
 			            .startNow()
 			            .withSchedule(SimpleScheduleBuilder.simpleSchedule()
-			                    .withIntervalInSeconds(statm.getInterval())
+			                    .withIntervalInSeconds(Integer.parseInt(reportingConfig.get("interval")))
 			                    .repeatForever())            
 			            .build();
 			 
 			 scheduler.scheduleJob(job, trigger);
-			 stat.add(statm);
-
-		 }
+			
 	 }
 	 
 	public static SiteMonitorStat getSiteMonitorStatByURI(String uri)
